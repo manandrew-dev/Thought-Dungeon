@@ -28,3 +28,12 @@
 .calm .eyes {
   color: var(--color-accent-hover);
 }
+
+.small {
+  --size: 4rem;
+}
+
+.small .eyes {
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--space-1);
+}
