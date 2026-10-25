@@ -1,0 +1,30 @@
+.creature {
+  --size: calc(8rem + 4rem * var(--intensity));
+  display: grid;
+  place-items: center;
+  width: var(--size);
+  height: var(--size);
+  margin: 0 auto;
+  border-radius: calc(50% - 20% * var(--intensity));
+  background: color-mix(in srgb, var(--color-accent) calc(30% + 60% * var(--intensity)), var(--color-surface));
+  box-shadow: var(--shadow-sm);
+  transition:
+    width var(--motion-slow) var(--ease-gentle),
+    height var(--motion-slow) var(--ease-gentle),
+    border-radius var(--motion-slow) var(--ease-gentle),
+    background var(--motion-slow) var(--ease-gentle);
+}
+
+.calm {
+  border-radius: 50%;
+}
+
+.eyes {
+  color: var(--color-on-accent);
+  font-size: var(--font-size-lg);
+  letter-spacing: var(--space-2);
+}
+
+.calm .eyes {
+  color: var(--color-accent-hover);
+}
