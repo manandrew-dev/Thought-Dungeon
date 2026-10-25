@@ -1,0 +1,94 @@
+{
+  "creature": {
+    "catastrophizing": [
+      "It feels like this could knock everything over.",
+      "Hmm… my chest was beating so fast, but maybe we can breathe now.",
+      "Some of those terrifying outcomes might not actually arrive after all.",
+      "Even if the road gets bumpy, we aren't completely helpless.",
+      "The fear was huge, but morning always finds a way to arrive."
+    ],
+    "mind_reading": [
+      "It feels like they're quietly judging you.",
+      "Well… I was whispering in the dark; I can't actually read their minds.",
+      "Maybe their quietness was just their own tiredness speaking.",
+      "People carry so many worries that have nothing to do with you.",
+      "I was letting anxiety make up stories. You are welcome here."
+    ],
+    "fortune_telling": [
+      "It feels like tomorrow's ending is already written.",
+      "My crystal wings are cloudy; maybe I'm not seeing clearly at all.",
+      "The story hasn't unfolded yet; things might turn out much softer.",
+      "There are so many unseen ways this could turn into something gentle.",
+      "Let's put down the heavy prophecy and take today one step at a time."
+    ],
+    "all_or_nothing": [
+      "It feels like if we can't be completely flawless, we've failed.",
+      "Hmm… guarding against every mistake has made us so very tired.",
+      "Maybe there's a big, beautiful world between zero and one hundred.",
+      "Being a learning, imperfect human is actually more than good enough.",
+      "We don't have to be perfect to be worthy of rest and love."
+    ],
+    "overgeneralization": [
+      "It feels like this disappointment is going to repeat forever.",
+      "My echo was so loud that I forgot each day is brand new.",
+      "There were times when things went right, even if today felt bruised.",
+      "A single stumble is just one moment in time, not a lifetime rule.",
+      "This moment doesn't define tomorrow. We can begin again gently."
+    ],
+    "should_statements": [
+      "It feels like you should already have everything figured out.",
+      "Oof… holding up all those rigid rules made my spirit so heavy.",
+      "Maybe those rules were written by fear, not by what's kind and fair.",
+      "It's okay to move at your own pace; there's no race to win here.",
+      "The rules can soften now. You're allowed to just be who you are today."
+    ],
+    "labeling": [
+      "It feels like one bad moment says who you are.",
+      "Ouch… that sticker was so sharp and cold; it must have stung so much.",
+      "A single word could never describe the vast, complex heart you carry.",
+      "You are someone who tries, who feels, and who is still growing.",
+      "Let's peel off that cruel tag and throw it away. You are so much more."
+    ],
+    "emotional_reasoning": [
+      "It feels so real that it seems like it must be true.",
+      "The fog in our chest was so thick that it hid all the landmarks.",
+      "Feelings are real heartbeats, but they aren't always true compasses.",
+      "As the panic breathes out, the solid ground beneath us hasn't moved.",
+      "I can honour my heavy feelings and still look at what's really here."
+    ],
+    "personalization": [
+      "It feels like whenever anything goes wrong, it's all on you.",
+      "Holding up this mirror and catching every blame made my arms shake.",
+      "Maybe other people's storms existed long before you arrived.",
+      "You don't have to apologize for things you never had the power to steer.",
+      "It's safe to put down what was never yours to hold. Rest your shoulders."
+    ],
+    "mental_filter": [
+      "It feels like only that single stinging wound matters in the world.",
+      "The mesh was so tight it blocked all the gentle light from reaching you.",
+      "Look through the gaps—there are quiet kindnesses that were always here.",
+      "One dark pebble doesn't mean the whole riverbed is made of stone.",
+      "Let's open up the mesh and let all the quiet warmth flood back in."
+    ]
+  },
+  "tamed": {
+    "catastrophizing": "The Doomwyrm curls up like a tired dragon, resting its head in quiet peace. It's okay to feel small sometimes; you can get through hard things.",
+    "mind_reading": "The Whisperer fades to a soft, comforting hum. You don't have to carry the burden of second-guessing everyone; your presence is enough.",
+    "fortune_telling": "The Oracle Moth gently folds its luminous wings and perches calmly. The future is an unwritten page, full of quiet hope.",
+    "all_or_nothing": "The Splitter melts its sharp edges and merges into a smooth, peaceful whole. Room has opened up in the middle, and you can breathe freely.",
+    "overgeneralization": "The Echo Slime softens into clear, calm water. One painful ripple does not make an endless ocean; today is its own quiet day.",
+    "should_statements": "The Shouldgeist releases its heavy mantle and floats like a comforting wisp of warm light. You are allowed to be gentle with your own rhythm.",
+    "labeling": "The Tagling lets its stickers drift softly away into the breeze. You are a living, breathing human being—infinitely greater than any label.",
+    "emotional_reasoning": "The Fogling disperses into a soft, golden mist, revealing clear, calm skies. Your feelings are honoured, and a little more peace has found its way in.",
+    "personalization": "The Mirror Imp gently turns its mirror toward the sunlight and rests quietly. Not every wave is yours to calm; you have carried enough.",
+    "mental_filter": "The Shadow Sieve tilts toward the sky, letting warm sunshine pour completely through. The world around you is so much wider and kinder than the shadows."
+  },
+  "breaks": [
+    "Unpacking heavy thoughts takes so much quiet courage. Maybe take a sip of water, let your shoulders drop, and just breathe for a moment.",
+    "You've done some deep, honest inner work. How about resting your eyes and watching the clouds or the trees outside the window for a little while?",
+    "The world can wait for a few quiet minutes. Step away from your desk, stretch your arms, and feel your feet firmly on the ground.",
+    "Place a hand somewhere comforting, take a slow breath, and remind yourself: you are doing just fine, exactly as you are.",
+    "Mental reframing is real emotional effort. Give yourself credit for showing up for yourself today, and enjoy a peaceful, guilt-free break.",
+    "If there's someone you feel safe around, or a pet nearby, maybe share a warm smile or a gentle 'hello'. You are not alone."
+  ]
+}
