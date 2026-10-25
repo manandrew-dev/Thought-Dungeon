@@ -88,10 +88,12 @@ Supported distortion types:
 | F7 | The system shall generate a creature for each thought. Species shall be determined by distortion; visual variation shall be deterministically seeded from the thought text. | P0 |
 | F8 | Each creature shall have a Resolve meter starting at 100. | P0 |
 | F9 | Each turn, the system shall offer three moves drawn from those applicable to the distortion. The same move shall not be offered in consecutive turns. | P0 |
-| F10 | The user shall answer the selected move's question in free text. The answer shall reduce Resolve by an amount based on effort (length and reflective language), never on correctness. Every answer shall reduce Resolve by a non-zero amount. | P0 |
+| F10 | The user shall answer the selected move's question in free text. Empty strings (`""`) and whitespace-only answers (spaces, tabs, or newlines) are invalid and shall receive an effect of 0. The engine shall reject them before changing encounter state: they shall not reduce Resolve, record a turn, draw new moves, or advance the encounter. Every valid answer containing at least one non-whitespace character shall reduce Resolve by a positive amount based on effort (length and reflective language), never on correctness. | P0 |
 | F11 | Between turns, the creature shall display a line of dialogue that restates the distortion in softened form. Dialogue shall never intensify the user's thought. | P1 |
 | F12 | Moves shall be accompanied by animation and sound, subject to user settings (F22). | P1 |
 | F13 | The user may retreat from an encounter at any time. A retreated encounter is saved in a resting state with no penalty. | P1 |
+
+Scoring rewards participation and reflective language without judging whether someone's thoughts are correct or therapeutically appropriate. The scorer shall perform no semantic analysis or gibberish detection; this is an intentional MVP limitation to maintain a supportive, nonjudgmental experience. This does not replace the safety screening required by F3 and S1. For valid nonempty answers, scoring shall use `effect = basePower + min(15, 0.4 × wordCount) + min(10, 3 × reflectiveMarkerCount)` as defined in `architecture.md` §5.4. Base power shall remain 15–30, the bonuses shall remain capped at 15 and 10 respectively, and the effect shall remain between `basePower` and `basePower + 25`. Scoring shall be deterministic and require no external AI or API dependencies.
 
 ### 4.4 Taming
 | ID | Requirement | Priority |
