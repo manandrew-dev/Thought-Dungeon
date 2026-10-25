@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import Creature from "../components/Creature";
 import { distortionById } from "../content";
-// Swap for ../core/insights as it lands.
-import { fieldNotes } from "../mocks/insights";
+import { fieldNotes } from "../core/insights";
 import { useAppStore } from "../store";
 import styles from "./Bestiary.module.css";
 
@@ -47,8 +46,8 @@ export default function Bestiary() {
           <section className={styles.notes} aria-labelledby="notes-heading">
             <h2 id="notes-heading">Field Notes</h2>
             <ul>
-              {notes.map((note) => (
-                <li key={note.kind}>{note.text}</li>
+              {notes.map((note, i) => (
+                <li key={`${note.kind}-${i}`}>{note.text}</li>
               ))}
             </ul>
           </section>
