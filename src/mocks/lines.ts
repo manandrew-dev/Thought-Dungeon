@@ -24,3 +24,13 @@ export function creatureLine(distortion: DistortionId | undefined, turn: number)
   const lines = (distortion && LINES[distortion]) || FALLBACK;
   return lines[Math.min(turn, lines.length - 1)];
 }
+
+const BREAKS = [
+  "Maybe take a few minutes for some water or a short walk.",
+  "This could be a good moment to stretch, look out a window, or rest your eyes.",
+  "Consider stepping away from the screen for a little while.",
+];
+
+export function breakSuggestion(): string {
+  return BREAKS[Math.floor(Math.random() * BREAKS.length)];
+}
