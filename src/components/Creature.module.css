@@ -1,0 +1,45 @@
+.creature {
+  display: block;
+  width: 12rem;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.small {
+  width: 4rem;
+}
+
+.body {
+  transition:
+    d var(--motion-slow) var(--ease-gentle),
+    fill var(--motion-slow) var(--ease-gentle),
+    stroke var(--motion-slow) var(--ease-gentle);
+}
+
+.idle {
+  transform-box: fill-box;
+  transform-origin: 50% 90%;
+  animation: wobble var(--wobble-duration, 3s) ease-in-out infinite alternate;
+}
+
+@keyframes wobble {
+  from {
+    transform: rotate(calc(var(--wobble-amount, 1) * -1deg));
+  }
+  to {
+    transform: rotate(calc(var(--wobble-amount, 1) * 1deg));
+  }
+}
+
+/* Reduced motion: the in-app setting wins; otherwise follow the OS preference. */
+:global(:root[data-reduced-motion="true"]) .idle {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(:root:not([data-reduced-motion="false"])) .idle {
+    animation: none;
+  }
+}
