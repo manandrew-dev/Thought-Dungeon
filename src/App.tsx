@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createHashRouter, Navigate, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import Bestiary from "./screens/Bestiary";
@@ -9,6 +10,7 @@ import Learn from "./screens/Learn";
 import Settings from "./screens/Settings";
 import Support from "./screens/Support";
 import Tame from "./screens/Tame";
+import { useAppStore } from "./store";
 
 // Hash routing so deep links survive a refresh on GitHub Pages.
 const router = createHashRouter([
@@ -31,5 +33,12 @@ const router = createHashRouter([
 ]);
 
 export default function App() {
+  const reducedMotion = useAppStore((state) => state.settings.reducedMotion);
+
+  // theme.css reads this to switch motion off or back on, overriding the OS preference.
+  useEffect(() => {
+    document.documentElement.dataset.reducedMotion = String(reducedMotion);
+  }, [reducedMotion]);
+
   return <RouterProvider router={router} />;
 }

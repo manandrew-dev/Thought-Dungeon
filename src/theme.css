@@ -64,6 +64,12 @@
   --motion-slow: 0ms;
 }
 
+:root[data-reduced-motion="false"] {
+  --motion-fast: 150ms;
+  --motion-base: 300ms;
+  --motion-slow: 600ms;
+}
+
 *,
 *::before,
 *::after {
