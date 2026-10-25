@@ -24,7 +24,7 @@ function freshSave(): SaveFile {
   return {
     version: 1,
     encounters: [],
-    settings: { sound: true, reducedMotion },
+    settings: { sound: false, reducedMotion },
   };
 }
 
