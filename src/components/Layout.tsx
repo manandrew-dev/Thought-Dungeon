@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import SafetyNotice from "./SafetyNotice";
+import { usePageTitle } from "./usePageTitle";
 import { useRouteFocus } from "./useRouteFocus";
 import styles from "./Layout.module.css";
 
@@ -12,6 +13,7 @@ const navItems = [
 
 export default function Layout() {
   useRouteFocus();
+  usePageTitle();
 
   return (
     <div className={styles.shell}>
