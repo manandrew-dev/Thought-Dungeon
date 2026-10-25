@@ -36,7 +36,8 @@ Every step of a CBT thought record is a game action, so playing the game *is* do
 - Every piece of text you write is screened for crisis language before anything else happens (see [Safety](#safety)).
 
 ### Spotting the pattern
-- A keyword classifier suggests the one or two most likely thinking patterns.
+- A keyword classifier suggests the one or two most likely thinking patterns. Its suggestion is framed as a best guess.
+- When no keyword matches, there is no suggestion. Instead of a placeholder guess, you see all ten patterns, with none pre-selected, and pick the one that feels closest.
 - You always confirm or change the suggestion yourself. Naming the pattern is part of the practice.
 - Ten patterns, each with its own creature:
 
@@ -112,7 +113,7 @@ We wrote the model's ten hypotheses before seeing any results. We tested on two 
 
 - **The hybrid adds only 4 points top-2 across all 50 sentences, and lowers top-1 on the tuned set from 97% to 70%.** ML alone is barely above chance (random top-2 is 20%).
 - **A 67 MB download isn't justified** by that gain: it's heavy on mobile data and unreliable on event wifi. Inference itself was fast, at about 40 ms per thought once loaded.
-- **The real limitation is keyword coverage.** Keywords matched nothing for half of the held-out sentences. You confirm or change the pattern anyway, and choosing it is itself part of the CBT practice. So the classifier only needs to give a reasonable starting point, and when it has no match, the choice is yours.
+- **The real limitation is keyword coverage.** Keywords matched nothing for half of the held-out sentences. You confirm or change the pattern anyway, and choosing it is itself part of the CBT practice. So the classifier only needs to give a reasonable starting point. When it has no match, Capture says so honestly and shows all ten patterns rather than a misleading "closest match".
 
 ## Accessibility
 
