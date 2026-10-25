@@ -1,10 +1,73 @@
-/* Starter tokens; the full theme lands in #4. */
+/* Theme tokens. Components use these variables; never hardcode colours, radii, or font sizes. */
 :root {
-  --color-bg: #f7f5f0;
+  /* Colour */
+  --color-bg: #f6f4ef;
+  --color-surface: #ffffff;
+  --color-surface-muted: #ece9e1;
   --color-text: #2b2a33;
+  --color-text-muted: #5a5866;
+  --color-border: #d6d2c8;
+  --color-accent: #46589c;
+  --color-accent-hover: #36467f;
+  --color-on-accent: #ffffff;
+  --color-focus: #2f5bd3;
+  --color-notice-bg: #e6efe9;
+  --color-notice-text: #23443a;
+
+  /* Typography */
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.75rem;
+  --line-height-tight: 1.25;
+  --line-height-base: 1.6;
+  --font-weight-bold: 600;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  /* Shape */
+  --radius-sm: 6px;
   --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgb(43 42 51 / 0.08);
+  --focus-ring: 3px solid var(--color-focus);
+
+  /* Layout */
+  --content-max-width: 44rem;
+
+  /* Motion */
+  --motion-fast: 150ms;
+  --motion-base: 300ms;
+  --motion-slow: 600ms;
+  --ease-gentle: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-base: 0ms;
+    --motion-slow: 0ms;
+  }
+}
+
+/* Set by the Settings toggle; overrides the media query either way. */
+:root[data-reduced-motion="true"] {
+  --motion-fast: 0ms;
+  --motion-base: 0ms;
+  --motion-slow: 0ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
@@ -13,4 +76,34 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+h1,
+h2,
+h3 {
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-bold);
+}
+
+h1 {
+  font-size: var(--font-size-xl);
+}
+
+a {
+  color: var(--color-accent);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Headings receive programmatic focus on navigation; no ring for that. */
+[tabindex="-1"]:focus:not(:focus-visible) {
+  outline: none;
 }
