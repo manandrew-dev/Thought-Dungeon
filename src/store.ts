@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { DistortionId, Encounter, Settings, Suggestion } from "./core/types";
+import type { DistortionId, Encounter, SaveFile, Settings, Suggestion } from "./core/types";
 // Swap these for ./core/engine and ./data/storage as they land.
 import { applyMove, confirmDistortion, createEncounter, resume, retreat, submitBalanced } from "./mocks/engine";
 
@@ -15,12 +15,18 @@ interface AppState {
   /** Drops an encounter without saving, e.g. after a crisis screen (architecture §5.1). */
   discardEncounter: (id: string) => void;
   updateSettings: (patch: Partial<Settings>) => void;
+  /** Everything the user has, in the SaveFile format (stands in for storage.exportJson). */
+  exportData: () => SaveFile;
+  /** Deletes all encounters and resets settings (stands in for storage.wipe). */
+  wipeAll: () => void;
 }
 
-const prefersReducedMotion =
-  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const defaultSettings = (): Settings => ({
+  sound: true,
+  reducedMotion: typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+});
 
-export const useAppStore = create<AppState>()((set) => {
+export const useAppStore = create<AppState>()((set, get) => {
   const update = (id: string, fn: (encounter: Encounter) => Encounter) =>
     set((state) => {
       const encounter = state.encounters[id];
@@ -29,7 +35,7 @@ export const useAppStore = create<AppState>()((set) => {
 
   return {
     encounters: {},
-    settings: { sound: true, reducedMotion: prefersReducedMotion },
+    settings: defaultSettings(),
 
     startEncounter: (thought, beliefBefore, suggestions, distortion) => {
       const encounter = confirmDistortion(createEncounter(thought, beliefBefore, suggestions), distortion);
@@ -49,5 +55,8 @@ export const useAppStore = create<AppState>()((set) => {
       }),
 
     updateSettings: (patch) => set((state) => ({ settings: { ...state.settings, ...patch } })),
+
+    exportData: () => ({ version: 1, encounters: Object.values(get().encounters), settings: get().settings }),
+    wipeAll: () => set({ encounters: {}, settings: defaultSettings() }),
   };
 });
