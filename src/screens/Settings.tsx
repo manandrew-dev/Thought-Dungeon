@@ -6,7 +6,7 @@ import styles from "./Settings.module.css";
 export default function Settings() {
   const settings = useAppStore((state) => state.settings);
   const updateSettings = useAppStore((state) => state.updateSettings);
-  const exportData = useAppStore((state) => state.exportData);
+  const exportJson = useAppStore((state) => state.exportJson);
   const wipeAll = useAppStore((state) => state.wipeAll);
 
   const [confirming, setConfirming] = useState(false);
@@ -23,8 +23,7 @@ export default function Settings() {
   }, [returnFocus, confirming]);
 
   function handleExport() {
-    const json = JSON.stringify(exportData(), null, 2);
-    const url = URL.createObjectURL(new Blob([json], { type: "application/json" }));
+        const url = URL.createObjectURL(new Blob([exportJson()], { type: "application/json" }));
     const link = document.createElement("a");
     link.href = url;
     link.download = "thought-dungeon-data.json";

@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import BeliefSlider from "../components/BeliefSlider";
 import MoveCard from "../components/MoveCard";
 import type { DistortionId, Suggestion } from "../core/types";
-// Swap for ../core/safety, ../core/classifier and content/distortions.json as they land.
+import { screen } from "../core/safety";
+// Swap for ../core/classifier and content/distortions.json as they land.
 import { suggest } from "../mocks/classifier";
 import { DISTORTIONS, distortionById } from "../mocks/distortions";
-import { screen } from "../mocks/safety";
 import { useAppStore } from "../store";
 import styles from "./Capture.module.css";
 

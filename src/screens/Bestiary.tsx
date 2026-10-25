@@ -48,7 +48,7 @@ export default function Bestiary() {
             <h2 id="notes-heading">Field Notes</h2>
             <ul>
               {notes.map((note) => (
-                <li key={note}>{note}</li>
+                <li key={note.kind}>{note.text}</li>
               ))}
             </ul>
           </section>
