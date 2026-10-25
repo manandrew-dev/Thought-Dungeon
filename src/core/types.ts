@@ -57,6 +57,14 @@ export interface Encounter {
   beliefAfter?: number;         // 0–100
 }
 
+export interface FieldNote {
+  kind:
+    | "distortion_frequency"
+    | "mean_belief_change"
+    | "effective_move";
+  text: string;
+}
+
 export interface Settings {
   sound: boolean;
   reducedMotion: boolean;
