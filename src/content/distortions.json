@@ -3,7 +3,7 @@
     "id": "catastrophizing",
     "name": "Catastrophizing",
     "creature": "Doomwyrm",
-    "blurb": "Jumping straight to the worst possible outcome and treating it as certain or unbearable.",
+    "blurb": "When your mind feels overwhelmed and rushes straight to the darkest ending to brace for impact, treating an imagined storm as if the world is already ending.",
     "example": "If I fail this, my life is over.",
     "palette": ["#7a3b5e", "#e07a5f"],
     "patterns": [
@@ -21,7 +21,7 @@
     "id": "mind_reading",
     "name": "Mind Reading",
     "creature": "Whisperer",
-    "blurb": "Assuming you know what other people are thinking, usually something negative about you, without real evidence.",
+    "blurb": "Quietly convincing yourself that others are disappointed or thinking poorly of you, turning their silence or tired expressions into hidden criticism, without real evidence.",
     "example": "They definitely think I'm annoying.",
     "palette": ["#4a4e8c", "#9fa8da"],
     "patterns": [
@@ -37,7 +37,7 @@
     "id": "fortune_telling",
     "name": "Fortune Telling",
     "creature": "Oracle Moth",
-    "blurb": "Predicting the future as if it's already decided, and expecting it to go badly.",
+    "blurb": "Feeling as though tomorrow's script is already set in stone—and that disappointment is the only possible outcome before you even begin.",
     "example": "I just know it'll go badly.",
     "palette": ["#5b4b8a", "#d4a5a5"],
     "patterns": [
@@ -54,7 +54,7 @@
     "id": "all_or_nothing",
     "name": "All-or-Nothing Thinking",
     "creature": "Splitter",
-    "blurb": "Seeing things in only two boxes, perfect or worthless, success or total failure, with nothing in between.",
+    "blurb": "Believing that unless something is completely flawless, it has zero worth—leaving no room to be human or make mistakes in the quiet middle.",
     "example": "If it's not perfect, it's worthless.",
     "palette": ["#2f4858", "#f6ae2d"],
     "patterns": [
@@ -71,7 +71,7 @@
     "id": "overgeneralization",
     "name": "Overgeneralization",
     "creature": "Echo Slime",
-    "blurb": "Turning one event into a rule, so a single setback becomes 'always' or 'never'.",
+    "blurb": "Letting a single painful stumble echo into a permanent rule, whispering that 'this is how everything will always be.'",
     "example": "I always mess everything up.",
     "palette": ["#2a7f62", "#a8e6cf"],
     "patterns": [
@@ -88,7 +88,7 @@
     "id": "should_statements",
     "name": "Should Statements",
     "creature": "Shouldgeist",
-    "blurb": "Holding yourself to rigid rules about what you 'should' or 'must' do, and feeling guilty when you fall short.",
+    "blurb": "Weighing your heart down with rigid 'shoulds' and 'musts', leaving you feeling exhausted and guilty for simply needing a rest.",
     "example": "I should be further along by now.",
     "palette": ["#6b5b95", "#c5b4e3"],
     "patterns": [
@@ -103,7 +103,7 @@
     "id": "labeling",
     "name": "Labeling",
     "creature": "Tagling",
-    "blurb": "Summing yourself up with one harsh label, as if a single moment defines who you are.",
+    "blurb": "Slapping a cruel, one-word sticker over your entire worth after a tough moment, forgetting the whole, resilient human you truly are.",
     "example": "I'm such an idiot.",
     "palette": ["#8c4a2f", "#f2b880"],
     "patterns": [
@@ -118,7 +118,7 @@
     "id": "emotional_reasoning",
     "name": "Emotional Reasoning",
     "creature": "Fogling",
-    "blurb": "Treating a feeling as proof of a fact: 'I feel it, so it must be true.'",
+    "blurb": "Because the knot of anxiety hurts so deeply in your chest, your mind treats that pain as proof that the situation itself must be hopeless.",
     "example": "I feel useless, so I must be.",
     "palette": ["#5c6b73", "#c2dfe3"],
     "patterns": [
@@ -134,7 +134,7 @@
     "id": "personalization",
     "name": "Personalization",
     "creature": "Mirror Imp",
-    "blurb": "Taking the blame for things that weren't fully in your control, or assuming others' moods are all about you.",
+    "blurb": "Carrying the weight of the whole room on your shoulders, quietly blaming yourself for other people's storms that you could never control.",
     "example": "The group failed because of me.",
     "palette": ["#9a3b3b", "#f4a6a6"],
     "patterns": [
@@ -150,7 +150,7 @@
     "id": "mental_filter",
     "name": "Mental Filter",
     "creature": "Shadow Sieve",
-    "blurb": "Focusing on one negative detail and filtering out everything that went well.",
+    "blurb": "Letting a single stinging critique or flaw cast a long shadow, filtering out the quiet victories and genuine care that surround it.",
     "example": "The one bad comment is all that matters.",
     "palette": ["#3d3d5c", "#b8b8d1"],
     "patterns": [
