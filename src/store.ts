@@ -1,8 +1,7 @@
 import { create } from "zustand";
 import type { DistortionId, Encounter, SaveFile, Settings, Suggestion } from "./core/types";
+import { createEncounter, reduce, type Action } from "./core/engine";
 import { exportJson, load, save, wipe } from "./data/storage";
-// Swap for ./core/engine as it lands.
-import { applyMove, confirmDistortion, createEncounter, resume, retreat, submitBalanced } from "./mocks/engine";
 
 interface AppState {
   encounters: Record<string, Encounter>;
@@ -22,15 +21,18 @@ interface AppState {
   wipeAll: () => void;
 }
 
+// Seeded PRNGs keep the engine's tests deterministic; in the app, any source of randomness will do.
+const rng = Math.random;
+
 const byId = (encounters: Encounter[]) => Object.fromEntries(encounters.map((e) => [e.id, e]));
 
 const initial = load();
 
 export const useAppStore = create<AppState>()((set) => {
-  const update = (id: string, fn: (encounter: Encounter) => Encounter) =>
+  const dispatch = (id: string, action: Action) =>
     set((state) => {
       const encounter = state.encounters[id];
-      return encounter ? { encounters: { ...state.encounters, [id]: fn(encounter) } } : state;
+      return encounter ? { encounters: { ...state.encounters, [id]: reduce(encounter, action, rng) } } : state;
     });
 
   return {
@@ -38,15 +40,15 @@ export const useAppStore = create<AppState>()((set) => {
     settings: initial.settings,
 
     startEncounter: (thought, beliefBefore, suggestions, distortion) => {
-      const encounter = confirmDistortion(createEncounter(thought, beliefBefore, suggestions), distortion);
+      const encounter = reduce(createEncounter(thought, beliefBefore, suggestions), { type: "CONFIRM_DISTORTION", distortion }, rng);
       set((state) => ({ encounters: { ...state.encounters, [encounter.id]: encounter } }));
       return encounter.id;
     },
 
-    applyMove: (id, moveId, answer) => update(id, (e) => applyMove(e, moveId, answer)),
-    retreat: (id) => update(id, retreat),
-    resume: (id) => update(id, resume),
-    submitBalanced: (id, text, beliefAfter) => update(id, (e) => submitBalanced(e, text, beliefAfter)),
+    applyMove: (id, moveId, answer) => dispatch(id, { type: "USE_MOVE", moveId, answer }),
+    retreat: (id) => dispatch(id, { type: "RETREAT" }),
+    resume: (id) => dispatch(id, { type: "RESUME" }),
+    submitBalanced: (id, text, beliefAfter) => dispatch(id, { type: "SUBMIT_BALANCED", text, beliefAfter }),
 
     discardEncounter: (id) =>
       set((state) => {
