@@ -1,18 +1,9 @@
-import type { DistortionId, Encounter, Move, Suggestion } from "../core/types";
+import { effect } from "../core/scorer";
+import type { DistortionId, Encounter, Suggestion } from "../core/types";
 import { moveById, movePool } from "./moves";
 
-// Mock of core/engine.ts and core/scorer.ts (Keith). The real engine exposes reduce(state, action, rng);
+// Mock of core/engine.ts (Keith). The real engine exposes reduce(state, action, rng);
 // each function below stands in for reduce with the matching action type.
-
-const REFLECTIVE_MARKERS = ["but", "although", "evidence", "actually", "maybe", "in the past", "a friend"];
-
-// Mirrors architecture §5.4.
-function effect(answer: string, move: Move): number {
-  const lower = answer.toLowerCase();
-  const words = lower.split(/\s+/).filter(Boolean).length;
-  const markers = REFLECTIVE_MARKERS.filter((m) => new RegExp(`\\b${m}\\b`).test(lower)).length;
-  return move.basePower + Math.min(15, 0.4 * words) + Math.min(10, 3 * markers);
-}
 
 function drawMoves(distortion: DistortionId, exclude?: string): string[] {
   const pool = movePool(distortion).filter((m) => m.id !== exclude);
@@ -48,7 +39,9 @@ export function confirmDistortion(state: Encounter, distortion: DistortionId): E
 // USE_MOVE
 export function applyMove(state: Encounter, moveId: string, answer: string): Encounter {
   const move = moveById(moveId);
-  if (state.phase !== "battling" || !state.distortion || !move || !state.offeredMoveIds.includes(moveId)) return state;
+  // Empty or whitespace-only answers are rejected without changing state (architecture §5.3).
+  if (state.phase !== "battling" || !state.distortion || !move || !answer.trim()) return state;
+  if (!state.offeredMoveIds.includes(moveId)) return state;
   const amount = Math.round(effect(answer, move));
   const resolve = Math.max(0, state.resolve - amount);
   return {
