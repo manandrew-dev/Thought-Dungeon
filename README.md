@@ -209,6 +209,9 @@ docs/             requirements and architecture
   - axe-core (MPL-2.0, development only)
 - **Evaluation only, not shipped:** Transformers.js and the `Xenova/distilbert-base-uncased-mnli` model were used offline to evaluate the ML classifier. They are not part of the app.
 
+## Slideshow
+https://docs.google.com/presentation/d/1JcWj2y3hIfYnn046IzJT0qXLTR7MKVLVW2J_-ivfO9M/edit?usp=sharing
+
 ## Licence
 
 [MIT](LICENSE)
