@@ -69,3 +69,8 @@ export function retreat(state: Encounter): Encounter {
 export function resume(state: Encounter): Encounter {
   return state.phase === "resting" ? { ...state, phase: "battling" } : state;
 }
+
+// SUBMIT_BALANCED
+export function submitBalanced(state: Encounter, text: string, beliefAfter: number): Encounter {
+  return state.phase === "taming" ? { ...state, balancedThought: text, beliefAfter, phase: "tamed" } : state;
+}

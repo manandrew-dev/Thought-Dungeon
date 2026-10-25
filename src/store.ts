@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import type { DistortionId, Encounter, Settings, Suggestion } from "./core/types";
 // Swap these for ./core/engine and ./data/storage as they land.
-import { applyMove, confirmDistortion, createEncounter, resume, retreat } from "./mocks/engine";
+import { applyMove, confirmDistortion, createEncounter, resume, retreat, submitBalanced } from "./mocks/engine";
 
 interface AppState {
   encounters: Record<string, Encounter>;
@@ -11,6 +11,7 @@ interface AppState {
   applyMove: (id: string, moveId: string, answer: string) => void;
   retreat: (id: string) => void;
   resume: (id: string) => void;
+  submitBalanced: (id: string, text: string, beliefAfter: number) => void;
   /** Drops an encounter without saving, e.g. after a crisis screen (architecture §5.1). */
   discardEncounter: (id: string) => void;
   updateSettings: (patch: Partial<Settings>) => void;
@@ -39,6 +40,7 @@ export const useAppStore = create<AppState>()((set) => {
     applyMove: (id, moveId, answer) => update(id, (e) => applyMove(e, moveId, answer)),
     retreat: (id) => update(id, retreat),
     resume: (id) => update(id, resume),
+    submitBalanced: (id, text, beliefAfter) => update(id, (e) => submitBalanced(e, text, beliefAfter)),
 
     discardEncounter: (id) =>
       set((state) => {
