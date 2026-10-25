@@ -132,6 +132,7 @@ a:hover {
   border-radius: var(--radius-md);
   font: inherit;
   font-weight: var(--font-weight-bold);
+  text-decoration: none;
   cursor: pointer;
   transition: background-color var(--motion-fast) var(--ease-gentle);
 }
@@ -141,7 +142,9 @@ a:hover {
   opacity: 0.7;
 }
 
-.btn-primary {
+/* Includes :hover so link buttons aren't overridden by the global a:hover colour. */
+.btn-primary,
+.btn-primary:hover {
   background: var(--color-accent);
   color: var(--color-on-accent);
 }
@@ -151,7 +154,8 @@ a:hover {
   border-color: var(--color-accent-hover);
 }
 
-.btn-secondary {
+.btn-secondary,
+.btn-secondary:hover {
   background: var(--color-surface);
   color: var(--color-accent);
 }
