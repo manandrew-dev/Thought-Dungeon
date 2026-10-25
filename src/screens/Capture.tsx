@@ -10,6 +10,11 @@ import { useAppStore } from "../store";
 import styles from "./Capture.module.css";
 
 const MAX_LENGTH = 500;
+// With no keyword match the classifier returns a single placeholder suggestion at this confidence
+// (architecture §5.2). Treat that as "no suggestion" rather than presenting it as a match.
+const NO_MATCH_CONFIDENCE = 0.1;
+
+const isNoMatch = (result: Suggestion[]) => result.length === 1 && result[0].confidence <= NO_MATCH_CONFIDENCE;
 const WARN_AT = 450;
 
 type Step = "write" | "confirm";
@@ -55,9 +60,10 @@ export default function Capture() {
     setChecking(true);
     try {
       const result = await suggest(text);
+      const noMatch = isNoMatch(result);
       setSuggestions(result);
-      setSelected(result[0]?.distortion ?? "");
-      setShowAll(result.length === 0);
+      setSelected(noMatch ? "" : (result[0]?.distortion ?? ""));
+      setShowAll(result.length === 0 || noMatch);
     } catch {
       setSuggestions([]);
       setSelected("");
@@ -75,7 +81,9 @@ export default function Capture() {
     navigate(`/encounter/${id}`);
   }
 
-  const suggestedIds = suggestions.map((s) => s.distortion);
+  // Suggestions worth showing as such; the raw list is still saved with the encounter.
+  const shown = isNoMatch(suggestions) ? [] : suggestions;
+  const suggestedIds = shown.map((s) => s.distortion);
   const others = DISTORTIONS.filter((d) => !suggestedIds.includes(d.id));
   const remaining = MAX_LENGTH - thought.length;
 
@@ -140,13 +148,15 @@ export default function Capture() {
             Which thinking pattern fits best?
           </h2>
           <blockquote className={styles.thought}>{thought.trim()}</blockquote>
-          <p className={styles.hint}>
-            This is a best guess. You know your thoughts better than any tool does, so pick whichever feels closest.
+          <p id="confirm-hint" className={styles.hint}>
+            {shown.length > 0
+              ? "This is a best guess. You know your thoughts better than any tool does, so pick whichever feels closest."
+              : "This one's hard to place, so there's no suggestion this time. Read through the patterns and pick whichever feels closest."}
           </p>
 
           <fieldset className={styles.options}>
             <legend className="visually-hidden">Thinking pattern</legend>
-            {suggestions.map((s, i) => {
+            {shown.map((s, i) => {
               const d = distortionById(s.distortion);
               return (
                 <MoveCard
@@ -161,7 +171,7 @@ export default function Capture() {
               );
             })}
 
-            {suggestions.length > 0 && (
+            {shown.length > 0 && (
               <button
                 type="button"
                 className="btn-link"
@@ -192,7 +202,12 @@ export default function Capture() {
             <button type="button" className="btn btn-secondary" onClick={() => setStep("write")}>
               Back
             </button>
-            <button type="submit" className="btn btn-primary" disabled={!selected}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={!selected}
+              aria-describedby={selected ? undefined : "confirm-hint"}
+            >
               Meet the creature
             </button>
           </div>
