@@ -139,7 +139,7 @@
     "palette": ["#9a3b3b", "#f4a6a6"],
     "patterns": [
       { "pattern": "\\b(because of me|my fault|blame myself|i'?m to blame|i am to blame)\\b", "weight": 3 },
-      { "pattern": "\\blet (them|everyone|the team|the group|my \\w+) down\\b", "weight": 2.5 },
+      { "pattern": "\\blet (them|everyone|everybody|(the|my|our) (whole )?\\w+) down\\b", "weight": 2.5 },
       { "pattern": "\\b(i|i'?ve|i have) (ruined|caused|wrecked)\\b", "weight": 2 },
       { "pattern": "\\bif (only )?i (had|hadn'?t|did|didn'?t)\\b", "weight": 2 },
       { "pattern": "\\b(it'?s|it is|it was) (all )?on me\\b", "weight": 2 },
