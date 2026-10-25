@@ -1,0 +1,12 @@
+.notice {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-notice-bg);
+  color: var(--color-notice-text);
+  border-top: 1px solid var(--color-border);
+}
+
+.text {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  font-size: var(--font-size-sm);
+}

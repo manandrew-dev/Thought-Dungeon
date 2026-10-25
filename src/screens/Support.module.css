@@ -1,0 +1,15 @@
+.page {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+}
+
+.list {
+  display: grid;
+  gap: var(--space-3);
+  padding-left: var(--space-6);
+}
+
+.note {
+  color: var(--color-text-muted);
+}
