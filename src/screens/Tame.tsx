@@ -2,11 +2,11 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import BeliefSlider from "../components/BeliefSlider";
 import CreaturePlaceholder from "../components/CreaturePlaceholder";
-// Swap for ../core/safety, content JSON, and Creature.tsx as they land.
+import { screen } from "../core/safety";
+// Swap for content JSON and Creature.tsx as they land.
 import { distortionById } from "../mocks/distortions";
 import { breakSuggestion } from "../mocks/lines";
 import { moveById } from "../mocks/moves";
-import { screen } from "../mocks/safety";
 import { useAppStore } from "../store";
 import styles from "./Tame.module.css";
 

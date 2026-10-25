@@ -3,11 +3,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import CreaturePlaceholder from "../components/CreaturePlaceholder";
 import MoveCard from "../components/MoveCard";
 import ResolveBar from "../components/ResolveBar";
-// Swap for ../core/safety, content JSON, and Creature.tsx as they land.
+import { screen } from "../core/safety";
+// Swap for content JSON and Creature.tsx as they land.
 import { distortionById } from "../mocks/distortions";
 import { creatureLine } from "../mocks/lines";
 import { moveById } from "../mocks/moves";
-import { screen } from "../mocks/safety";
 import { useAppStore } from "../store";
 import styles from "./Encounter.module.css";
 

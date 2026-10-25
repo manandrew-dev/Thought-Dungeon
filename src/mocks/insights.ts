@@ -1,28 +1,28 @@
-import type { DistortionId, Encounter } from "../core/types";
+import type { DistortionId, Encounter, FieldNote } from "../core/types";
 import { distortionById } from "./distortions";
 import { moveById } from "./moves";
 
-// Mock of core/insights.ts (Keith). Architecture §5.6 returns FieldNote[], which types.ts
-// doesn't define yet, so this returns plain sentences. Descriptive only: no dates or usage counts.
-export function fieldNotes(encounters: Encounter[]): string[] {
+// Mock of core/insights.ts (Keith). Descriptive only: no dates or usage counts.
+export function fieldNotes(encounters: Encounter[]): FieldNote[] {
   const tamed = encounters.filter((e) => e.phase === "tamed" && e.distortion && e.beliefAfter !== undefined);
   if (tamed.length === 0) return [];
-  const notes: string[] = [];
+  const notes: FieldNote[] = [];
 
   const counts = new Map<DistortionId, number>();
   for (const e of tamed) counts.set(e.distortion!, (counts.get(e.distortion!) ?? 0) + 1);
   const top = Math.max(...counts.values());
   const topNames = [...counts].filter(([, n]) => n === top).map(([id]) => distortionById(id).name);
-  notes.push(
-    tamed.length === 1
+  notes.push({
+    kind: "distortion_frequency",
+    text: tamed.length === 1
       ? `So far, the pattern you've worked with is ${topNames[0]}.`
       : `${joinNames(topNames)} ${topNames.length === 1 ? "has" : "have"} come up most often.`,
-  );
+  });
 
   const avg = (values: number[]) => Math.round(values.reduce((a, b) => a + b, 0) / values.length);
   const before = avg(tamed.map((e) => e.beliefBefore));
   const after = avg(tamed.map((e) => e.beliefAfter!));
-  notes.push(`On average, belief in the original thought moved from ${before} to ${after}.`);
+  notes.push({ kind: "mean_belief_change", text: `On average, belief in the original thought moved from ${before} to ${after}.` });
 
   const biggest = tamed.reduce((best, e) =>
     e.beliefBefore - e.beliefAfter! > best.beliefBefore - best.beliefAfter! ? e : best,
@@ -30,7 +30,10 @@ export function fieldNotes(encounters: Encounter[]): string[] {
   if (biggest.beliefBefore - biggest.beliefAfter! > 0) {
     const moveNames = [...new Set(biggest.turns.map((t) => moveById(t.moveId)?.name).filter(Boolean))] as string[];
     if (moveNames.length > 0) {
-      notes.push(`${joinNames(moveNames)} ${moveNames.length === 1 ? "was" : "were"} part of the encounter with the largest change.`);
+      notes.push({
+        kind: "effective_move",
+        text: `${joinNames(moveNames)} ${moveNames.length === 1 ? "was" : "were"} part of the encounter with the largest change.`,
+      });
     }
   }
 
