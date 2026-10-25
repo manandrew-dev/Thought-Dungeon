@@ -1,0 +1,165 @@
+[
+  {
+    "id": "catastrophizing",
+    "name": "Catastrophizing",
+    "creature": "Doomwyrm",
+    "blurb": "Jumping straight to the worst possible outcome and treating it as certain or unbearable.",
+    "example": "If I fail this, my life is over.",
+    "palette": ["#7a3b5e", "#e07a5f"],
+    "patterns": [
+      { "pattern": "\\b(my life|the world|everything|it)('s| is| would be| will be) over\\b", "weight": 3 },
+      { "pattern": "\\bend of the world\\b", "weight": 3 },
+      { "pattern": "\\b(disaster|catastrophe|nightmare|ruin(ed|s)?|doomed)\\b", "weight": 2 },
+      { "pattern": "\\b(never recover|can'?t survive|unbearable|can'?t handle (it|this))\\b", "weight": 2 },
+      { "pattern": "\\b(bomb|tank|blow|fail|flunk)(ing|ed|s)? (my|the|this|that) (midterm|exam|final|test|interview|presentation|course|class|assignment)\\b", "weight": 3 },
+      { "pattern": "\\b(bomb|tank|blow) (my|the|this)\\b", "weight": 1.5 },
+      { "pattern": "\\bworst\\b", "weight": 1.5 },
+      { "pattern": "\\bwhat if\\b", "weight": 1 }
+    ]
+  },
+  {
+    "id": "mind_reading",
+    "name": "Mind Reading",
+    "creature": "Whisperer",
+    "blurb": "Assuming you know what other people are thinking, usually something negative about you, without real evidence.",
+    "example": "They definitely think I'm annoying.",
+    "palette": ["#4a4e8c", "#9fa8da"],
+    "patterns": [
+      { "pattern": "\\b(they|he|she|everyone|everybody|people|my \\w+) (probably |definitely |must |all |secretly )?(think|thinks|thought)\\b", "weight": 3 },
+      { "pattern": "\\b(everyone|they|people|everybody) (will|would|must) (know|notice|see|realize|judge)\\b", "weight": 3 },
+      { "pattern": "\\b(judg(e|es|ing|ed)|laugh(ing|ed)? at me|talking about me)\\b", "weight": 2 },
+      { "pattern": "\\b(hates?|hated|can'?t stand) me\\b", "weight": 2 },
+      { "pattern": "\\bcan tell (they|he|she|everyone)\\b", "weight": 2 },
+      { "pattern": "\\b(annoyed|bored|disappointed|fed up) (with|by|in) me\\b", "weight": 1.5 }
+    ]
+  },
+  {
+    "id": "fortune_telling",
+    "name": "Fortune Telling",
+    "creature": "Oracle Moth",
+    "blurb": "Predicting the future as if it's already decided, and expecting it to go badly.",
+    "example": "I just know it'll go badly.",
+    "palette": ["#5b4b8a", "#d4a5a5"],
+    "patterns": [
+      { "pattern": "\\b(i )?just know\\b", "weight": 2.5 },
+      { "pattern": "\\b(it'?s|it is|this is) (going to|gonna) (go|be|turn out) (badly|bad|terrible|terribly|awful|wrong)\\b", "weight": 3 },
+      { "pattern": "\\b(it'?ll|it will|this will|that will) (go |turn out )?(badly|bad|terribly|wrong)\\b", "weight": 3 },
+      { "pattern": "\\b(i'?m|i am) (going to|gonna) (fail|mess|screw|blank|freeze|embarrass)\\b", "weight": 2.5 },
+      { "pattern": "\\b(won'?t|will never|never going to) (get|pass|work out|go well|be able|make it)\\b", "weight": 2 },
+      { "pattern": "\\bno point (in )?(trying|applying|studying|going)\\b", "weight": 2 },
+      { "pattern": "\\b(going to|gonna)\\b", "weight": 0.5 }
+    ]
+  },
+  {
+    "id": "all_or_nothing",
+    "name": "All-or-Nothing Thinking",
+    "creature": "Splitter",
+    "blurb": "Seeing things in only two boxes, perfect or worthless, success or total failure, with nothing in between.",
+    "example": "If it's not perfect, it's worthless.",
+    "palette": ["#2f4858", "#f6ae2d"],
+    "patterns": [
+      { "pattern": "\\bperfect(ly|ion)?\\b", "weight": 2 },
+      { "pattern": "\\b(worthless|pointless|a waste)\\b", "weight": 2 },
+      { "pattern": "\\b(complete|total|utter) (failure|waste|disaster|mess)\\b", "weight": 2 },
+      { "pattern": "\\b(ruined|wasted|failed) (everything|it all|the whole)\\b", "weight": 2 },
+      { "pattern": "\\b(all or nothing|either .+ or|or nothing)\\b", "weight": 1.5 },
+      { "pattern": "\\bif (it'?s|i'?m|it is|i am) not\\b", "weight": 1.5 },
+      { "pattern": "\\b(100|a hundred) ?(%|percent)\\b", "weight": 1.5 }
+    ]
+  },
+  {
+    "id": "overgeneralization",
+    "name": "Overgeneralization",
+    "creature": "Echo Slime",
+    "blurb": "Turning one event into a rule, so a single setback becomes 'always' or 'never'.",
+    "example": "I always mess everything up.",
+    "palette": ["#2a7f62", "#a8e6cf"],
+    "patterns": [
+      { "pattern": "\\b(always|never)\\b", "weight": 2.5 },
+      { "pattern": "\\b(every|each) (single )?time\\b", "weight": 2.5 },
+      { "pattern": "\\b(this|it) always happens\\b", "weight": 3 },
+      { "pattern": "\\bstory of my life\\b", "weight": 3 },
+      { "pattern": "\\b(everything|nothing) (ever )?(goes|works|turns out)\\b", "weight": 2 },
+      { "pattern": "\\bmess (everything|it all) up\\b", "weight": 1.5 },
+      { "pattern": "\\b(everyone|nobody|no one)\\b", "weight": 1 }
+    ]
+  },
+  {
+    "id": "should_statements",
+    "name": "Should Statements",
+    "creature": "Shouldgeist",
+    "blurb": "Holding yourself to rigid rules about what you 'should' or 'must' do, and feeling guilty when you fall short.",
+    "example": "I should be further along by now.",
+    "palette": ["#6b5b95", "#c5b4e3"],
+    "patterns": [
+      { "pattern": "\\bshould(n'?t)?\\b", "weight": 3 },
+      { "pattern": "\\b(must|mustn'?t|ought to)\\b", "weight": 2.5 },
+      { "pattern": "\\b(further along|by now|at my age)\\b", "weight": 2 },
+      { "pattern": "\\b(have to|has to|need to|supposed to)\\b", "weight": 1.5 },
+      { "pattern": "\\bshould have\\b", "weight": 1 }
+    ]
+  },
+  {
+    "id": "labeling",
+    "name": "Labeling",
+    "creature": "Tagling",
+    "blurb": "Summing yourself up with one harsh label, as if a single moment defines who you are.",
+    "example": "I'm such an idiot.",
+    "palette": ["#8c4a2f", "#f2b880"],
+    "patterns": [
+      { "pattern": "\\b(i'?m|i am)( such| so| just| a| an| total| complete| the| like)* (idiot|stupid|loser|failure|fraud|joke|disappointment|mess|burden|freak|pathetic|dumb|moron|imposter|impostor)\\b", "weight": 3 },
+      { "pattern": "\\b(idiot|loser|fraud|moron|imposter|impostor)\\b", "weight": 1.5 },
+      { "pattern": "\\b(i'?m|i am) not (smart|good|talented|clever) enough\\b", "weight": 2 },
+      { "pattern": "\\b(i'?m|i am) (bad|terrible|hopeless|useless) at\\b", "weight": 1.5 },
+      { "pattern": "\\bwhat'?s wrong with me\\b", "weight": 1.5 }
+    ]
+  },
+  {
+    "id": "emotional_reasoning",
+    "name": "Emotional Reasoning",
+    "creature": "Fogling",
+    "blurb": "Treating a feeling as proof of a fact: 'I feel it, so it must be true.'",
+    "example": "I feel useless, so I must be.",
+    "palette": ["#5c6b73", "#c2dfe3"],
+    "patterns": [
+      { "pattern": "\\bso (i|it|that|this) must (be|mean)\\b", "weight": 3 },
+      { "pattern": "\\bit feels (like|true|real|so)\\b", "weight": 2.5 },
+      { "pattern": "\\b(anxious|scared|nervous|guilty|ashamed|afraid|bad|awful),? so\\b", "weight": 2.5 },
+      { "pattern": "\\bfeel(s)? (so )?(useless|stupid|worthless|guilty|anxious|hopeless|like a failure|like a fraud)\\b", "weight": 2 },
+      { "pattern": "\\bi feel( like)?\\b", "weight": 2 },
+      { "pattern": "\\bmust mean\\b", "weight": 2 }
+    ]
+  },
+  {
+    "id": "personalization",
+    "name": "Personalization",
+    "creature": "Mirror Imp",
+    "blurb": "Taking the blame for things that weren't fully in your control, or assuming others' moods are all about you.",
+    "example": "The group failed because of me.",
+    "palette": ["#9a3b3b", "#f4a6a6"],
+    "patterns": [
+      { "pattern": "\\b(because of me|my fault|blame myself|i'?m to blame|i am to blame)\\b", "weight": 3 },
+      { "pattern": "\\blet (them|everyone|the team|the group|my \\w+) down\\b", "weight": 2.5 },
+      { "pattern": "\\b(i|i'?ve|i have) (ruined|caused|wrecked)\\b", "weight": 2 },
+      { "pattern": "\\bif (only )?i (had|hadn'?t|did|didn'?t)\\b", "weight": 2 },
+      { "pattern": "\\b(it'?s|it is|it was) (all )?on me\\b", "weight": 2 },
+      { "pattern": "\\b(upset|mad|angry|quiet|cold) (with|at|around) me\\b", "weight": 1.5 }
+    ]
+  },
+  {
+    "id": "mental_filter",
+    "name": "Mental Filter",
+    "creature": "Shadow Sieve",
+    "blurb": "Focusing on one negative detail and filtering out everything that went well.",
+    "example": "The one bad comment is all that matters.",
+    "palette": ["#3d3d5c", "#b8b8d1"],
+    "patterns": [
+      { "pattern": "\\b(all that matters|the only thing)\\b", "weight": 3 },
+      { "pattern": "\\b(one|that|a single|the) (bad|negative|mean|critical|harsh) (comment|thing|mistake|review|remark|grade|moment)\\b", "weight": 3 },
+      { "pattern": "\\bonly (remember|see|think about|notice|hear)\\b", "weight": 2.5 },
+      { "pattern": "\\b(can'?t stop thinking about|keep thinking about|keep replaying)\\b", "weight": 2 },
+      { "pattern": "\\b(doesn'?t|don'?t) (matter|count)\\b", "weight": 2 },
+      { "pattern": "\\b(but|except) (the|that|one)\\b", "weight": 1 }
+    ]
+  }
+]

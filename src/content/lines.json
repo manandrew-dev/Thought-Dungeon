@@ -1,0 +1,94 @@
+{
+  "creature": {
+    "catastrophizing": [
+      "This feels like it could be the end of everything.",
+      "Hmm… maybe it would be hard, but not the end.",
+      "Some of the worst parts might not happen at all.",
+      "Even if it goes badly, there could be ways through.",
+      "It's a big worry, but it isn't the whole story."
+    ],
+    "mind_reading": [
+      "It feels like they're thinking something bad about you.",
+      "Well… I can't actually hear what they're thinking.",
+      "Maybe they're busy with their own worries.",
+      "There could be lots of reasons for how they acted.",
+      "I was guessing. Guesses aren't facts."
+    ],
+    "fortune_telling": [
+      "It feels like I can already see how this will go.",
+      "My crystal ball is a little cloudy, now that I look.",
+      "It might go differently than I predicted.",
+      "The future hasn't actually happened yet.",
+      "Maybe I'll just wait and see what really happens."
+    ],
+    "all_or_nothing": [
+      "It feels like if it isn't perfect, it doesn't count.",
+      "Hmm… maybe there's some space between perfect and nothing.",
+      "Parts of it might have gone okay.",
+      "Good enough could still be good.",
+      "Not everything has to be all or nothing."
+    ],
+    "overgeneralization": [
+      "It feels like this always happens.",
+      "Well… maybe not always, exactly.",
+      "There were times it went differently.",
+      "This is one moment, not a forever rule.",
+      "One time doesn't decide every time."
+    ],
+    "should_statements": [
+      "It feels like you should be further along by now.",
+      "Hmm… who made that rule, anyway?",
+      "Maybe 'I'd like to' is fairer than 'I should'.",
+      "Everyone moves at their own pace.",
+      "The rule can bend. It doesn't have to break you."
+    ],
+    "labeling": [
+      "It feels like one moment says who you are.",
+      "Well… maybe that was just one moment.",
+      "A label leaves out a lot of things.",
+      "People are much bigger than one word.",
+      "I might have the wrong tag on you."
+    ],
+    "emotional_reasoning": [
+      "It feels true, so it seems like it must be.",
+      "Hmm… feelings are real, but are they facts?",
+      "The fog makes things look bigger than they are.",
+      "Feelings can change, even strong ones.",
+      "I can feel this and still look at the facts."
+    ],
+    "personalization": [
+      "It feels like this is all on you.",
+      "Well… maybe not all of it.",
+      "Other things played a part too.",
+      "Lots of it was outside your control.",
+      "Your slice is smaller than I said."
+    ],
+    "mental_filter": [
+      "It feels like only the bad part counts.",
+      "Hmm… some other things got through the sieve.",
+      "Maybe there were good parts I filtered out.",
+      "One detail isn't the whole picture.",
+      "There's more light here than I let in."
+    ]
+  },
+  "tamed": {
+    "catastrophizing": "The Doomwyrm curls up, calmer now. It's hard, and you can get through hard things.",
+    "mind_reading": "The Whisperer goes quiet. You don't have to guess what everyone thinks.",
+    "fortune_telling": "The Oracle Moth folds its wings. The future is still open.",
+    "all_or_nothing": "The Splitter softens into one piece. There's room in between.",
+    "overgeneralization": "The Echo Slime settles down. This moment doesn't have to repeat forever.",
+    "should_statements": "The Shouldgeist floats gently. You can be kind about your own pace.",
+    "labeling": "The Tagling lets its tag fall away. You're more than one word.",
+    "emotional_reasoning": "The Fogling clears a little. Your feelings matter, and so do the facts.",
+    "personalization": "The Mirror Imp relaxes. Not everything rests on you.",
+    "mental_filter": "The Shadow Sieve lets the light through. The whole picture is bigger."
+  },
+  "breaks": [
+    "Maybe take a few minutes for some water or a short walk.",
+    "This could be a good moment to stretch, look out a window, or rest your eyes.",
+    "Consider stepping away from the screen for a little while.",
+    "A few slow breaths might feel good right now.",
+    "You did some real thinking. Maybe give yourself a little rest.",
+    "If someone you trust is around, it might be nice to say hi."
+  ]
+}
