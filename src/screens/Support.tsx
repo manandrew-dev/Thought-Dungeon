@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { usePageTitle } from "../components/usePageTitle";
 import styles from "./Support.module.css";
 
 // Rendered outside the game layout. No game elements or terminology (S3).
 export default function Support() {
   const headingRef = useRef<HTMLHeadingElement>(null);
+  usePageTitle("Get support now");
 
   // This page sits outside Layout, so it handles its own focus on arrival.
   useEffect(() => {
