@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import CreaturePlaceholder from "../components/CreaturePlaceholder";
-// Swap for content/distortions.json as it lands.
-import { DISTORTIONS } from "../mocks/distortions";
+import Creature from "../components/Creature";
+import { DISTORTIONS } from "../content";
 import styles from "./Learn.module.css";
 
 export default function Learn() {
@@ -20,7 +19,7 @@ export default function Learn() {
       <ul className={styles.list}>
         {DISTORTIONS.map((d) => (
           <li key={d.id} className={styles.card}>
-            <CreaturePlaceholder name={d.creature} resolve={40} size="small" decorative />
+            <Creature species={d.id} resolve={40} size="small" decorative />
             <div className={styles.cardText}>
               <h2 className={styles.name}>{d.name}</h2>
               <p className={styles.creature}>Its creature: {d.creature}</p>

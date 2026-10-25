@@ -1,8 +1,6 @@
 import { Link, useParams } from "react-router-dom";
-import CreaturePlaceholder from "../components/CreaturePlaceholder";
-// Swap for content JSON and Creature.tsx as they land.
-import { distortionById } from "../mocks/distortions";
-import { moveById } from "../mocks/moves";
+import Creature from "../components/Creature";
+import { distortionById, moveById } from "../content";
 import { useAppStore } from "../store";
 import styles from "./Bestiary.module.css";
 
@@ -28,7 +26,7 @@ export default function BestiaryEntry() {
         ← Back to Bestiary
       </Link>
       <h1>{d.creature}</h1>
-      <CreaturePlaceholder name={d.creature} resolve={0} calm />
+      <Creature species={d.id} params={encounter.creature} resolve={0} calm />
       <p className={styles.lead}>
         <strong>{d.name}:</strong> {d.blurb}
       </p>

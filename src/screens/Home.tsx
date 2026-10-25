@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import CreaturePlaceholder from "../components/CreaturePlaceholder";
-// Swap for content JSON and Creature.tsx as they land.
-import { distortionById } from "../mocks/distortions";
+import Creature from "../components/Creature";
+import { distortionById } from "../content";
 import { useAppStore } from "../store";
 import styles from "./Home.module.css";
 
@@ -34,7 +33,7 @@ export default function Home() {
               const taming = e.phase === "taming";
               return (
                 <li key={e.id} className={styles.card}>
-                  <CreaturePlaceholder name={d.creature} resolve={e.resolve} calm={taming} size="small" decorative />
+                  <Creature species={d.id} params={e.creature} resolve={e.resolve} calm={taming} size="small" decorative />
                   <div className={styles.cardText}>
                     <p className={styles.status}>
                       {taming ? `The ${d.creature} has settled down.` : `The ${d.creature} is resting.`}

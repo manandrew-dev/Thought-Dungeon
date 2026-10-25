@@ -17,6 +17,12 @@
   font-style: italic;
 }
 
+.tamedLine {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  text-align: center;
+}
+
 .panel {
   display: grid;
   gap: var(--space-3);

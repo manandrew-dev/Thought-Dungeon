@@ -1,15 +1,12 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import CreaturePlaceholder from "../components/CreaturePlaceholder";
+import Creature from "../components/Creature";
 import CreatureStage from "../components/CreatureStage";
 import MoveCard from "../components/MoveCard";
 import ResolveBar from "../components/ResolveBar";
 import { useSound } from "../components/useSound";
 import { screen } from "../core/safety";
-// Swap for content JSON and Creature.tsx as they land.
-import { distortionById } from "../mocks/distortions";
-import { creatureLine } from "../mocks/lines";
-import { moveById } from "../mocks/moves";
+import { creatureLine, distortionById, moveById } from "../content";
 import { useAppStore } from "../store";
 import styles from "./Encounter.module.css";
 
@@ -88,7 +85,7 @@ export default function Encounter() {
 
       <section className={styles.arena} aria-label={`${creatureName}`}>
         <CreatureStage pulseKey={turnCount} calm={encounter.phase === "taming"}>
-          <CreaturePlaceholder name={creatureName} resolve={encounter.resolve} calm={encounter.phase === "taming"} />
+          <Creature species={encounter.distortion} params={encounter.creature} resolve={encounter.resolve} calm={encounter.phase === "taming"} />
         </CreatureStage>
         <ResolveBar value={encounter.resolve} />
         {encounter.phase === "battling" && (
