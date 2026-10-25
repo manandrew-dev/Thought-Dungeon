@@ -20,6 +20,7 @@
 
 .line {
   position: relative;
+  animation: line-in var(--motion-base) var(--ease-gentle);
   margin: 0;
   padding: var(--space-3) var(--space-4);
   background: var(--color-surface);
@@ -101,4 +102,11 @@
 .calmTitle {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
+}
+
+@keyframes line-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-2));
+  }
 }

@@ -2,6 +2,8 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import BeliefSlider from "../components/BeliefSlider";
 import CreaturePlaceholder from "../components/CreaturePlaceholder";
+import CreatureStage from "../components/CreatureStage";
+import { useSound } from "../components/useSound";
 import { screen } from "../core/safety";
 // Swap for content JSON and Creature.tsx as they land.
 import { distortionById } from "../mocks/distortions";
@@ -18,6 +20,7 @@ export default function Tame() {
   const encounter = useAppStore((state) => state.encounters[id]);
   const submitBalanced = useAppStore((state) => state.submitBalanced);
   const discardEncounter = useAppStore((state) => state.discardEncounter);
+  const play = useSound();
 
   const [text, setText] = useState("");
   // Start the second rating at the first one so nothing nudges the number either way.
@@ -68,6 +71,7 @@ export default function Tame() {
       return;
     }
     submitBalanced(id, balanced, belief);
+    play("tamed");
   }
 
   if (encounter.phase === "tamed") {
@@ -76,7 +80,9 @@ export default function Tame() {
         <h1 ref={headingRef} tabIndex={-1}>
           The {creatureName} is calm now
         </h1>
-        <CreaturePlaceholder name={creatureName} resolve={0} calm />
+        <CreatureStage calm animateIn>
+          <CreaturePlaceholder name={creatureName} resolve={0} calm />
+        </CreatureStage>
         <p className={styles.lead}>It has joined your Bestiary.</p>
 
         <section className={styles.panel} aria-labelledby="change-heading">

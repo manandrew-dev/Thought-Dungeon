@@ -1,3 +1,4 @@
+import { MotionConfig } from "framer-motion";
 import { useEffect } from "react";
 import { createHashRouter, Navigate, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
@@ -40,5 +41,10 @@ export default function App() {
     document.documentElement.dataset.reducedMotion = String(reducedMotion);
   }, [reducedMotion]);
 
-  return <RouterProvider router={router} />;
+  // Framer Motion only reads the OS preference on its own, so drive it from our setting.
+  return (
+    <MotionConfig reducedMotion={reducedMotion ? "always" : "never"}>
+      <RouterProvider router={router} />
+    </MotionConfig>
+  );
 }

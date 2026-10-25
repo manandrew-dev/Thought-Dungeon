@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import CreaturePlaceholder from "../components/CreaturePlaceholder";
+import CreatureStage from "../components/CreatureStage";
 import MoveCard from "../components/MoveCard";
 import ResolveBar from "../components/ResolveBar";
+import { useSound } from "../components/useSound";
 import { screen } from "../core/safety";
 // Swap for content JSON and Creature.tsx as they land.
 import { distortionById } from "../mocks/distortions";
@@ -16,6 +18,7 @@ export default function Encounter() {
   const navigate = useNavigate();
   const encounter = useAppStore((state) => state.encounters[id]);
   const { applyMove, retreat, resume, discardEncounter } = useAppStore();
+  const play = useSound();
 
   const [selectedMove, setSelectedMove] = useState("");
   const [answer, setAnswer] = useState("");
@@ -63,6 +66,7 @@ export default function Encounter() {
       return;
     }
     applyMove(id, move.id, text);
+    play(useAppStore.getState().encounters[id]?.phase === "taming" ? "calm" : "move");
     setSelectedMove("");
     setAnswer("");
     setError("");
@@ -83,10 +87,12 @@ export default function Encounter() {
       </header>
 
       <section className={styles.arena} aria-label={`${creatureName}`}>
-        <CreaturePlaceholder name={creatureName} resolve={encounter.resolve} calm={encounter.phase === "taming"} />
+        <CreatureStage pulseKey={turnCount} calm={encounter.phase === "taming"}>
+          <CreaturePlaceholder name={creatureName} resolve={encounter.resolve} calm={encounter.phase === "taming"} />
+        </CreatureStage>
         <ResolveBar value={encounter.resolve} />
         {encounter.phase === "battling" && (
-          <p ref={lineRef} tabIndex={-1} className={styles.line} aria-live="polite">
+          <p key={turnCount} ref={lineRef} tabIndex={-1} className={styles.line} aria-live="polite">
             <span className="visually-hidden">{creatureName} says: </span>
             {creatureLine(encounter.distortion, turnCount)}
           </p>
