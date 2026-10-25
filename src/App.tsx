@@ -1,6 +1,7 @@
 import { createHashRouter, Navigate, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import Bestiary from "./screens/Bestiary";
+import BestiaryEntry from "./screens/BestiaryEntry";
 import Capture from "./screens/Capture";
 import Encounter from "./screens/Encounter";
 import Home from "./screens/Home";
@@ -19,6 +20,7 @@ const router = createHashRouter([
       { path: "/encounter/:id", element: <Encounter /> },
       { path: "/encounter/:id/tame", element: <Tame /> },
       { path: "/bestiary", element: <Bestiary /> },
+      { path: "/bestiary/:id", element: <BestiaryEntry /> },
       { path: "/learn", element: <Learn /> },
       { path: "/settings", element: <Settings /> },
     ],
