@@ -280,7 +280,7 @@ stateDiagram-v2
 **Rules**
 
 - `CONFIRM_DISTORTION` sets `distortion`, generates `creature` via `generateCreature(hash(thought), distortion)`, and draws the first three moves.
-- `USE_MOVE` is valid only in `battling` and only for a move in `offeredMoveIds`. It computes `effect` via the Effort Scorer, appends a `Turn`, sets `resolve = max(0, resolve − effect)`, and draws three new moves excluding the move just used.
+- `USE_MOVE` is valid only in `battling`, only for a move in `offeredMoveIds`, and only when the answer contains at least one non-whitespace character. The engine must reject empty strings and whitespace-only answers before changing encounter state, returning the state unchanged: no Resolve reduction, `Turn` appended, new moves drawn, or phase advancement. For a valid submission, it computes `effect` via the Effort Scorer, appends a `Turn`, sets `resolve = max(0, resolve − effect)`, and draws three new moves excluding the move just used.
 - Move pool: moves whose `distortions` include the encounter's distortion, plus moves tagged `"any"`.
 - Actions invalid for the current phase return the state unchanged.
 - No transition to a failure state exists.
@@ -291,16 +291,23 @@ stateDiagram-v2
 export function effect(answer: string, move: Move): number;
 ```
 
+Empty strings (`""`) and whitespace-only answers (including spaces, tabs, and newlines) return an effect of `0`. These submissions are invalid and must be rejected by the engine before changing encounter state (§5.3).
+
+For an answer containing at least one non-whitespace character, the formula is unchanged:
+
 ```
 effect = move.basePower
        + min(15, 0.4 × wordCount)
        + min(10, 3 × reflectiveMarkerCount)
 ```
 
-- Reflective markers are a fixed list (e.g. "but", "although", "evidence", "actually", "maybe", "in the past", "a friend").
-- Minimum return value is `move.basePower` (always > 0).
-- Maximum return value is `move.basePower + 25`.
-- With `basePower` of 15–30 and Resolve of 100, an encounter takes 3–5 turns.
+- `wordCount` counts whitespace-separated tokens after trimming the answer. No semantic assessment is used to decide whether a token is a word.
+- Reflective markers are the fixed list "but", "although", "evidence", "actually", "maybe", "in the past", and "a friend". Matching is case-insensitive and uses word boundaries, so markers do not match arbitrary substrings. Phrases allow repeated whitespace between words; repeated marker occurrences count individually.
+- `basePower` remains 15–30. The word-count bonus is capped at 15 and the reflective-marker bonus at 10; scores are not rounded.
+- For valid nonempty answers, the minimum return value is `move.basePower` (always > 0) and the maximum is `move.basePower + 25`. Every valid nonempty answer produces positive progress.
+- Scoring rewards participation and reflective language without judging whether someone's thoughts are correct or therapeutically appropriate. The scorer performs no semantic analysis or gibberish detection. This is an intentional MVP limitation to maintain a supportive, nonjudgmental experience; punctuation-only or other nonempty responses still receive the formula's score.
+- Scoring is deterministic and independent of React, browser APIs, and storage. It has no external AI or API dependencies.
+- With `basePower` of 15–30 and Resolve of 100, the formula permits 2–7 valid turns. The 3–5-turn encounter is a pacing target, not a guaranteed scoring bound; invalid empty submissions do not count as turns.
 
 ### 5.5 Creature Generator — `core/creature.ts`, `components/Creature.tsx`
 
@@ -405,8 +412,8 @@ sequenceDiagram
 |---|---|
 | `safety` | Crisis phrases return `crisis: true`; representative ordinary worries return `false`. |
 | `classifier/keyword` | At least two example thoughts per distortion include the correct distortion in the top two suggestions. |
-| `engine` | All valid transitions; invalid actions leave state unchanged; Resolve never below 0; no failure state reachable; consecutive move offers never repeat the last move used. |
-| `scorer` | Result always ≥ `basePower`; result ≤ `basePower + 25`; longer reflective answers score ≥ shorter non-reflective answers. |
+| `engine` | All valid transitions; invalid actions leave state unchanged; empty and whitespace-only move submissions leave Resolve, turns, offered moves, and phase unchanged; Resolve never below 0; no failure state reachable; consecutive move offers never repeat the last move used. |
+| `scorer` | Empty and whitespace-only answers return 0; valid nonempty answers return ≥ `basePower` and ≤ `basePower + 25`; word-count and reflective-marker bonuses stay within their caps; markers match words or phrases rather than arbitrary substrings; identical inputs produce identical results; longer reflective answers score ≥ shorter non-reflective answers in representative cases. |
 | `storage` | Save/load round-trip; corrupt or unknown-version data yields a fresh `SaveFile` without throwing. |
 | `creature` | Same seed and species produce identical params. |
 
