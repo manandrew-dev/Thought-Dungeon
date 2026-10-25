@@ -44,7 +44,7 @@ function createSave(): SaveFile {
 const defaultSave: SaveFile = {
   version: 1,
   encounters: [],
-  settings: { sound: true, reducedMotion: false },
+  settings: { sound: false, reducedMotion: false },
 };
 
 describe("storage", () => {
@@ -84,7 +84,7 @@ describe("storage", () => {
 
   it("returns fresh default objects on each load", () => {
     const first = storage.load();
-    first.settings.sound = false;
+    first.settings.sound = true;
     first.encounters.push(structuredClone(tamedEncounter));
     expect(storage.load()).toEqual(defaultSave);
   });
