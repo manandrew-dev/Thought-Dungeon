@@ -4,9 +4,8 @@ import BeliefSlider from "../components/BeliefSlider";
 import MoveCard from "../components/MoveCard";
 import type { DistortionId, Suggestion } from "../core/types";
 import { screen } from "../core/safety";
-// Swap for ../core/classifier and content/distortions.json as they land.
-import { suggest } from "../mocks/classifier";
-import { DISTORTIONS, distortionById } from "../mocks/distortions";
+import { suggest } from "../core/classifier";
+import { DISTORTIONS, distortionById } from "../content";
 import { useAppStore } from "../store";
 import styles from "./Capture.module.css";
 

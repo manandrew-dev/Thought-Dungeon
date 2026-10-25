@@ -1,6 +1,5 @@
 import type { DistortionId, Encounter, FieldNote } from "../core/types";
-import { distortionById } from "./distortions";
-import { moveById } from "./moves";
+import { distortionById, moveById } from "../content";
 
 // Mock of core/insights.ts (Keith). Descriptive only: no dates or usage counts.
 export function fieldNotes(encounters: Encounter[]): FieldNote[] {

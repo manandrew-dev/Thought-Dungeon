@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import BeliefSlider from "../components/BeliefSlider";
-import CreaturePlaceholder from "../components/CreaturePlaceholder";
+import Creature from "../components/Creature";
 import CreatureStage from "../components/CreatureStage";
 import { useSound } from "../components/useSound";
 import { screen } from "../core/safety";
-// Swap for content JSON and Creature.tsx as they land.
-import { distortionById } from "../mocks/distortions";
-import { breakSuggestion } from "../mocks/lines";
-import { moveById } from "../mocks/moves";
+import { breakSuggestion, distortionById, moveById, tamedLine } from "../content";
 import { useAppStore } from "../store";
 import styles from "./Tame.module.css";
 
@@ -81,8 +78,9 @@ export default function Tame() {
           The {creatureName} is calm now
         </h1>
         <CreatureStage calm animateIn>
-          <CreaturePlaceholder name={creatureName} resolve={0} calm />
+          <Creature species={encounter.distortion} params={encounter.creature} resolve={0} calm />
         </CreatureStage>
+        <p className={styles.tamedLine}>{tamedLine(encounter.distortion)}</p>
         <p className={styles.lead}>It has joined your Bestiary.</p>
 
         <section className={styles.panel} aria-labelledby="change-heading">

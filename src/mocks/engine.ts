@@ -1,6 +1,8 @@
 import { effect } from "../core/scorer";
 import type { DistortionId, Encounter, Suggestion } from "../core/types";
-import { moveById, movePool } from "./moves";
+import { moveById, movePool } from "../content";
+import { generateCreature } from "../core/creature";
+import { hash } from "../core/rng";
 
 // Mock of core/engine.ts (Keith). The real engine exposes reduce(state, action, rng);
 // each function below stands in for reduce with the matching action type.
@@ -30,7 +32,7 @@ export function confirmDistortion(state: Encounter, distortion: DistortionId): E
   return {
     ...state,
     distortion,
-    creature: { seed: 1, species: distortion, bodyPoints: 8, wobble: 0.5, hue: 220, eyeCount: 2 },
+    creature: generateCreature(hash(state.thought), distortion),
     offeredMoveIds: drawMoves(distortion),
     phase: "battling",
   };

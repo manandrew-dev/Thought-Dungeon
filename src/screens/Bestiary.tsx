@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import CreaturePlaceholder from "../components/CreaturePlaceholder";
-// Swap for content JSON, core/insights, and Creature.tsx as they land.
-import { distortionById } from "../mocks/distortions";
+import Creature from "../components/Creature";
+import { distortionById } from "../content";
+// Swap for ../core/insights as it lands.
 import { fieldNotes } from "../mocks/insights";
 import { useAppStore } from "../store";
 import styles from "./Bestiary.module.css";
@@ -32,7 +32,7 @@ export default function Bestiary() {
               return (
                 <li key={e.id}>
                   <Link className={styles.card} to={`/bestiary/${e.id}`}>
-                    <CreaturePlaceholder name={d.creature} resolve={0} calm size="small" decorative />
+                    <Creature species={d.id} params={e.creature} resolve={0} calm size="small" decorative />
                     <span className={styles.cardText}>
                       <span className={styles.creatureName}>{d.creature}</span>
                       <span className={styles.distortion}>{d.name}</span>
