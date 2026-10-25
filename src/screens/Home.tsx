@@ -7,7 +7,7 @@ import styles from "./Home.module.css";
 export default function Home() {
   const encounters = useAppStore((state) => state.encounters);
   const waiting = Object.values(encounters)
-    .filter((e) => (e.phase === "resting" || e.phase === "taming") && e.distortion)
+    .filter((e) => (e.phase === "battling" || e.phase === "resting" || e.phase === "taming") && e.distortion)
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
   return (
@@ -36,7 +36,11 @@ export default function Home() {
                   <Creature species={d.id} params={e.creature} resolve={e.resolve} calm={taming} size="small" decorative />
                   <div className={styles.cardText}>
                     <p className={styles.status}>
-                      {taming ? `The ${d.creature} has settled down.` : `The ${d.creature} is resting.`}
+                      {taming
+                        ? `The ${d.creature} has settled down.`
+                        : e.phase === "resting"
+                          ? `The ${d.creature} is resting.`
+                          : `The ${d.creature} is still here.`}
                     </p>
                     <p className={styles.thought}>“{e.thought}”</p>
                     <Link
